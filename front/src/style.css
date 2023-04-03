@@ -1,0 +1,26 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+body {
+  font-family: 'Dosis', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  /* height: 100vh; */
+}
+
+* {
+  font-family: 'Dosis', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+#app {
+  position: relative;
+  min-height: 100vh;
+}
+
+.app-centered {
+  margin: 0 auto;
+}
+  

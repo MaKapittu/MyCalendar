@@ -1,0 +1,942 @@
+{
+	"info": {
+		"_postman_id": "b00d3250-a743-4319-9da3-a80d6d0d4923",
+		"name": "shareCalendar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23379717"
+	},
+	"item": [
+		{
+			"name": "UserTests",
+			"item": [
+				{
+					"name": "GetUsers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/User",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserByUsername",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Username is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.Username).to.eql(pm.environment.get(\"victori.a\"));\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/User/victori.a",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"User",
+								"victori.a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostNewUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"Tests\",\r\n  \"firstname\": \"Tests\",\r\n  \"lastname\": \"string\",\r\n  \"email\": \"string\",\r\n  \"birthday\": \"2022-11-18T14:59:35.294Z\",\r\n  \"status\": \"Private\",\r\n  \"password\": \"Tests\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/User",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostSameUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"4\",\r\n  \"username\": \"Tests\",\r\n  \"firstname\": \"Tests\",\r\n  \"lastname\": \"string\",\r\n  \"email\": \"string\",\r\n  \"birthday\": \"2022-11-18T14:59:35.294Z\",\r\n  \"status\": \"Private\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/User",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsers(newList)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Users count is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(16);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/User",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/User/Tests",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"User",
+								"Tests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteSameUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/User/Tests",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"User",
+								"Tests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEvents(oldList)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Users count is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(16);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/User",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"User"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EventTests",
+			"item": [
+				{
+					"name": "PostLogin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var jsonData = pm.response.json();\r",
+									"var token = jsonData.token;\r",
+									"pm.collectionVariables.set(\"token\", token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"victori.a\",\r\n  \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/AuthManagement/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"AuthManagement",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status 200(GetEvents)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/Events",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEventByTitle",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Title is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.Title).to.eql(pm.environment.get(\"Work\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/Events/Work",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Events",
+								"Work"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostEvent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"title\": \"Dance\",\r\n  \"date\": \"2022-11-19T14:38:40.273Z\",\r\n  \"startTime\": \"2022-11-18T15:38:40.273Z\",\r\n  \"endTime\": \"2022-11-18T18:38:40.273Z\",\r\n  \"description\": \"new test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/Events",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostSameEvents",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 6,\r\n  \"title\": \"Dance\",\r\n  \"date\": \"2022-11-19T14:38:40.273Z\",\r\n  \"startTime\": \"2022-11-18T15:38:40.273Z\",\r\n  \"endTime\": \"2022-11-18T18:38:40.273Z\",\r\n  \"description\": \"new test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/Events",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEvents(newList)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Events count is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(4);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/Events",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteEvent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/Events/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Events",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteSameEvent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/Events/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Events",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEvents(oldList)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Events count is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(2);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/Events",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"Events"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RegistrationTests",
+			"item": [
+				{
+					"name": "RegistrUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"testuser\",\r\n  \"password\": \"testuser\",\r\n  \"firstname\": \"testname\",\r\n  \"lastname\": \"testname\",\r\n  \"email\": \"testuser@gmail.com\",\r\n  \"birthDay\": \"2022-11-30T19:24:06.252Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/AuthManagement/registration",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"AuthManagement",
+								"registration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RegistrSameUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"testuser\",\r\n  \"password\": \"testuser\",\r\n  \"firstname\": \"testname\",\r\n  \"lastname\": \"testname\",\r\n  \"email\": \"testuser@gmail.com\",\r\n  \"birthDay\": \"2022-11-30T19:24:06.252Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/AuthManagement/registration",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"AuthManagement",
+								"registration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsers(newList)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Users count is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.eql(4);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/User",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginNewUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"testuser\",\r\n  \"password\": \"testuser\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/AuthManagement/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"AuthManagement",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/User/testuser",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"User",
+								"testuser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://localhost:7113",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
