@@ -1,6 +1,8 @@
 # MyCalendar
 Group calendar project
+
 Made with c#, vue.ts, typescript, docker
+
 Test are made in postman
 
 To open a project on windows 10 and vs code:
