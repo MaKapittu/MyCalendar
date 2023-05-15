@@ -1,7 +1,9 @@
 # MyCalendar
 Made with c#, vue.ts, typescript, docker
 
-To run the project you need to:
+Test are tested in postman
+
+To open a project on windows 10 and vs code:
 1. In Visual Studio Code open folder with the poject
 
 2. Open Docker to make engine running 
