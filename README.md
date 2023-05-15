@@ -1,9 +1,11 @@
 # MyCalendar
 Group calendar project
 
-Made with c#, vue.ts, typescript, docker
+Backend is made with: c#, docker
 
 Test are made in postman
+
+Frontend is made with: vue.ts, typescript, css, html
 
 To open a project on windows 10 and vs code:
 1. In Visual Studio Code open folder with the poject
