@@ -1,7 +1,7 @@
 # MyCalendar
+Group calendar project
 Made with c#, vue.ts, typescript, docker
-
-Test are tested in postman
+Test are made in postman
 
 To open a project on windows 10 and vs code:
 1. In Visual Studio Code open folder with the poject
